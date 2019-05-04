@@ -2,7 +2,7 @@ import requests, json
 
 class main():
     def __init__(self, token):
-        self.base_url = 'https://osu.ppy.sh/api/'
+        self.base_url = "https://osu.ppy.sh/api/"
         self.token = token
     def jsong(self, url):
         data = requests.get(url)
@@ -46,4 +46,7 @@ class main():
             add_url = "&" + str(add_key) + "=" + param[str(add_key)]
             ready_url += add_url
         data_get = self.jsong(ready_url)
+        return data_get
+    def match(self, matchid):
+        ready_url = self.base_url + "get_user_recent?k=" + self.token + "&mp=" + matchid
         return data_get
