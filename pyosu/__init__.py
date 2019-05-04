@@ -50,19 +50,15 @@ class main():
     def match(self, matchid):
         ready_url = self.base_url + "get_match?k=" + self.token + "&mp=" + matchid
         return data_get
-    def beatmaps(self, mapid, num=None, mode=None, user=None, typedata=None):
+    def beatmaps(self, mapid, limit=None, mode=None, user=None):
         ready_url = self.base_url + "get_beatmaps?k=" + self.token + "&b=" + mapid
         if user != None:
             ready_url = ready_url + "&u=" + user
         if mode != None:
             ready_url = ready_url + "&m=" + mode
         if num != None:
-            ready_url = ready_url + "&limit=" + num
-            data_ready = data_get[num-1]
-            if typedata != None:
-                return data_get[typedata]
-            else:
-                return data_get
+            ready_url = ready_url + "&limit=" + str(num)
+            data_get = self.jsong(ready_url)
         else:
             ready_url = ready_url + "&limit=500"
             data_get = self.jsong(ready_url)
