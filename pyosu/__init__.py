@@ -2,7 +2,7 @@ import requests, json
 
 class main():
     def __init__(self, token):
-        self.base_url = "https://osu.ppy.sh/api/"
+        self.base_url = 'https://osu.ppy.sh/api/'
         self.token = token
     def jsong(self, url):
         data = requests.get(url)
