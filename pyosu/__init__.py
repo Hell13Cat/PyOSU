@@ -48,5 +48,25 @@ class main():
         data_get = self.jsong(ready_url)
         return data_get
     def match(self, matchid):
-        ready_url = self.base_url + "get_user_recent?k=" + self.token + "&mp=" + matchid
+        ready_url = self.base_url + "get_match?k=" + self.token + "&mp=" + matchid
         return data_get
+    def beatmaps(self, mapid, num=None, mode=None, name=None, typedata=None):
+        ready_url = self.base_url + "get_beatmaps?k=" + self.token + "&b=" + mapid
+        if name != None:
+            ready_url = root_url + "&u=" + name
+        if mode != None:
+            ready_url = root_url + "&m=" + name
+        if num != None:
+            ready_url = root_url + "&limit=" + num
+            data_ready = data_get[num-1]
+            if typedata != None:
+                return data_get[typedata]
+            else:
+                return data_get
+        else:
+            ready_url = root_url + "&limit=500"
+            data_get = self.jsong(ready_url)
+            return data_get
+        
+
+#get_beatmaps get_replayb
